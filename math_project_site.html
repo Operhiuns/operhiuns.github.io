@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matematik Projem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f2f5;
+    }
+    header {
+      background: #2a2d37;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+    }
+    section {
+      margin: 20px auto;
+      width: 90%;
+      max-width: 900px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    input, button, textarea {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      cursor: pointer;
+      background: #2a2d37;
+      color: white;
+      border: none;
+    }
+    .forum-message {
+      background: #eef0f5;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>Matematik Projem • Modern Web Sitesi</header>
+
+  <section>
+    <h2>⚡ Basit Hesap Makinesi</h2>
+    <input id="calcA" type="number" placeholder="Sayı 1">
+    <input id="calcB" type="number" placeholder="Sayı 2">
+    <button onclick="calc()">Hesapla</button>
+    <p id="calcResult"></p>
+  </section>
+
+  <section>
+    <h2>📐 Alan / Çevre Hesaplayıcı (Dikdörtgen)</h2>
+    <input id="k1" type="number" placeholder="Uzun kenar">
+    <input id="k2" type="number" placeholder="Kısa kenar">
+    <button onclick="rectangle()">Hesapla</button>
+    <p id="rectResult"></p>
+  </section>
+
+  <section>
+    <h2>📚 Ünlü Matematikçiler</h2>
+    <ul>
+      <li><b>Leonhard Euler:</b> Analiz, grafik teorisi ve sayı teorisinin babası.</li>
+      <li><b>Carl Gauss:</b> "Matematiğin Prensi" olarak bilinir.</li>
+      <li><b>Isaac Newton:</b> Kalkülüs ve hareket yasaları.</li>
+      <li><b>Alan Turing:</b> Modern bilgisayar biliminin kurucusu.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💬 Forum • Mesaj Bırak</h2>
+    <textarea id="forumInput" placeholder="Mesajını Yaz..."></textarea>
+    <button onclick="sendMsg()">Gönder</button>
+    <div id="forum"></div>
+  </section>
+
+  <script>
+    function calc() {
+      const a = Number(document.getElementById('calcA').value);
+      const b = Number(document.getElementById('calcB').value);
+      document.getElementById('calcResult').innerText =
+        `Toplam: ${a+b}, Çarpım: ${a*b}`;
+    }
+
+    function rectangle() {
+      const u = Number(document.getElementById('k1').value);
+      const k = Number(document.getElementById('k2').value);
+      const alan = u * k;
+      const cevre = 2 * (u + k);
+      document.getElementById('rectResult').innerText = `Alan: ${alan}, Çevre: ${cevre}`;
+    }
+
+    function sendMsg() {
+      const msg = document.getElementById('forumInput').value;
+      if (!msg.trim()) return;
+      const div = document.createElement('div');
+      div.className = 'forum-message';
+      div.innerText = msg;
+      document.getElementById('forum').appendChild(div);
+      document.getElementById('forumInput').value = '';
+    }
+  </script>
+</body>
+</html>
